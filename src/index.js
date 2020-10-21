@@ -1,17 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Form from './components/form'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { validateForm1 } from './utils/validate'
+
+const form1 = [
+  {
+    name: 'name',
+    type: 'text',
+    placeholder: 'name'
+  },
+  {
+    name: 'last name',
+    type: 'text',
+    placeholder: 'last name'
+  },
+  {
+    name: 'age',
+    type: 'number',
+    placeholder: 'age'
+  }
+
+]
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  <div className='container'>
+    <h1>Forms</h1>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    <Form data={form1} action={(values) => console.log(values)} validateFunction={validateForm1} />
+  </div>,
+  document.getElementById('root')
+)
